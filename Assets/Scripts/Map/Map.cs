@@ -4,19 +4,40 @@ using UnityEngine;
 using System;
 using System.Linq;
 
+/// <summary>
+/// A little bit messy class, that manages cards effect query.
+/// TODO: delete this class is garbage between BattlePlayer and MapVisual.
+/// Battle playyer will directly say to Map visual (or may be even to card, that something change)
+/// </summary>
 public class Map : MonoBehaviour
 {
+    /// <summary>
+    /// When all effects has been applied.
+    /// </summary>
     public Action OnAnimationEnd;
 
-    [SerializeField] private MapVisual visual;
-
+    /// <summary>
+    /// TODO delete this var, we shhouldnt managed it.
+    /// </summary>
     public List<AbstractCard>[] Cards { get; private set; }
 
+    /// <summary>
+    /// Map visualizer.
+    /// </summary>
+    [SerializeField] private MapVisual visual;
+
+    /// <summary>
+    /// Cards effect, Todo: may be Bbattle manager  
+    /// </summary>
     private List<AbstractCard> cardsForEffect = new List<AbstractCard>();
     private AbstractEffect.ApplyEffect effect;
 
     private bool isVisualizing;
 
+    /// <summary>
+    /// Initialize map/
+    /// </summary>
+    /// <param name="map"></param>
     public void Init(List<AbstractCard>[] map)
     {
         Cards = map;
@@ -27,6 +48,11 @@ public class Map : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Some card has been player
+    /// </summary>
+    /// <param name="playerId"></param>
+    /// <param name="card"></param>
     public void PlayCard(int playerId, AbstractCard card)
     {
         if (card == null)
@@ -38,6 +64,11 @@ public class Map : MonoBehaviour
         SpawnCard(playerId, card);
     }
 
+    /// <summary>
+    /// Some card has been deleted.
+    /// </summary>
+    /// <param name="playerId"></param>
+    /// <param name="id"></param>
     public void RemoveCard(int playerId, int id)
     {
         Cards[playerId].RemoveAt(id);
