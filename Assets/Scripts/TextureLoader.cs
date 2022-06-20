@@ -39,6 +39,7 @@ public class TextureLoader : MonoBehaviour
     {
         foreach (var i in titles)
         {
+            //Dont load different texture to same card
             if (Textures.ContainsKey(i))
             {
                 continue;
