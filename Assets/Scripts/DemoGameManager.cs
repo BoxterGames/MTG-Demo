@@ -38,8 +38,8 @@ public class DemoGameManager : MonoBehaviour
         if (loader.IsLoadingEnded && waitingTexture)
         {
             waitingTexture = false;
-            Array.ForEach(decks, cards => cards.ForEach(card => card.Texture = loader.textures[card.Title]));
-            Array.ForEach(cards, cards => cards.ForEach(card => card.Texture = loader.textures[card.Title]));
+            Array.ForEach(decks, cards => cards.ForEach(card => card.Texture = loader.Textures[card.Title]));
+            Array.ForEach(cards, cards => cards.ForEach(card => card.Texture = loader.Textures[card.Title]));
 
             StartBattle();
         }
