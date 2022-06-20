@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Example for demo player
+/// </summary>
 public class DeckGeneratorExample : AbstractGenerator
 {
     public override List<AbstractCard> GenerateDeck()

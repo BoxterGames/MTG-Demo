@@ -4,8 +4,14 @@ using UnityEngine;
 using System.Linq;
 using System;
 
+/// <summary>
+/// Manage that all cards was animated and stay at right place.
+/// </summary>
 public class MapVisual : MonoBehaviour
 {
+    /// <summary>
+    /// Is all cards animationn complete
+    /// </summary>
     public bool IsAnimationEnd
     {
         get
@@ -25,6 +31,11 @@ public class MapVisual : MonoBehaviour
     private List<CardVisual>[] cardsMap = new List<CardVisual>[] { new List<CardVisual>(), new List<CardVisual>() };
     private bool movingEnds;
 
+    /// <summary>
+    /// Add card
+    /// </summary>
+    /// <param name="playerID"></param>
+    /// <param name="card"></param>
     public void AddCard(int playerID, AbstractCard card)
     {
         var cardVisual = Instantiate(cardPrefab, playerFields[playerID]);
@@ -33,6 +44,11 @@ public class MapVisual : MonoBehaviour
         UpdateCardPosition(cardsMap[playerID], true);
     }
 
+    /// <summary>
+    /// Remove dead card.
+    /// </summary>
+    /// <param name="playerId"></param>
+    /// <param name="id"></param>
     public void RemoveCard(int playerId, int id)
     {
         Destroy(cardsMap[playerId][id].gameObject);

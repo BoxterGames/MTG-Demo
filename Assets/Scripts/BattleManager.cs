@@ -5,34 +5,50 @@ using System;
 using System;
 
 /// <summary>
-/// Manage game turn. 
+/// Manage battle turn. And cards living. Later will be call cards attack action.
 /// </summary>
 public class BattleManager : MonoBehaviour
 {
-    public Map Field;
-
+    /// <summary>
+    /// Ovject that shows turns order.
+    /// TODO: Move outside.
+    /// </summary>
     public GameObject[] TurnActive = new GameObject[2];
+
+
+    /// <summary>
+    /// Map that containes all cards.
+    /// </summary>
+    private Map map;
 
     private BattlePlayer[] players;
     private int playerId;
 
+    /// <summary>
+    /// Start battles
+    /// </summary>
+    /// <param name="newPlayers">Players who will be play</param>
+    /// <param name="cards">Cards on deck</param>
     public void StartBattle(BattlePlayer[] newPlayers, List<AbstractCard>[] cards)
     {
-        Field.Init(cards);
+        map.Init(cards);
 
         players = newPlayers;
         playerId = 0;
 
         Array.ForEach(TurnActive, i => i.SetActive(i == TurnActive[0]));
+        
+        //Subscribe to player turn ends
         Array.ForEach(players, player => player.OnCardChoose += OnCardChoose);
-        Field.OnAnimationEnd += OnAnimationEnd;
+        
+        map.OnAnimationEnd += OnAnimationEnd;
         players[0].StartTurn();
     }
 
     private void OnCardChoose(AbstractCard newCard)
     {
         Array.ForEach(TurnActive, i => i.SetActive(false));
-        Field.PlayCard(playerId, newCard);
+        map.PlayCard(playerId, newCard);
     }
 
     private void OnAnimationEnd()
@@ -46,13 +62,13 @@ public class BattleManager : MonoBehaviour
 
     private void DeleteDeadCard()
     {
-        for (int i = Field.Cards.Length - 1; i >= 0; i--)
+        for (int i = map.Cards.Length - 1; i >= 0; i--)
         {
-            for (int j = Field.Cards[i].Count - 1; j >= 0; j--)
+            for (int j = map.Cards[i].Count - 1; j >= 0; j--)
             {
-                if(((CreatureCard)Field.Cards[i][j]).HitPoint < 0)
+                if(((CreatureCard)map.Cards[i][j]).HitPoint <= 0)
                 {
-                    Field.RemoveCard(i, j);
+                    map.RemoveCard(i, j);
                 }
             }
         }

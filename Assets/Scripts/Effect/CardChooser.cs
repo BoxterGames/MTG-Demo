@@ -10,10 +10,20 @@ public enum ChooseType
     Random
 }
 
+/// <summary>
+/// Class that  choose card for apply effect
+/// </summary>
 [System.Serializable]
 public class CardChooser
 {
+    /// <summary>
+    /// Whose card select
+    /// </summary>
     public bool ChooseOpponentCard;
+
+    /// <summary>
+    /// How much card select.
+    /// </summary>
     public ChooseType Type;
 
     public CardChooser(ChooseType type, bool chooseOpponentCard)
@@ -22,6 +32,12 @@ public class CardChooser
         ChooseOpponentCard = chooseOpponentCard;
     }
 
+    /// <summary>
+    /// Calculate List<card> for apply effect
+    /// </summary>
+    /// <param name="playerId"></param>
+    /// <param name="cards"></param>
+    /// <returns></returns>
     public List<AbstractCard> GetCards(int playerId, List<AbstractCard>[] cards)
     {
         int id = ChooseOpponentCard ? (playerId + 1) % cards.Length : playerId;
