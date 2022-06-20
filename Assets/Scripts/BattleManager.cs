@@ -10,14 +10,16 @@ using System;
 public class BattleManager : MonoBehaviour
 {
     /// <summary>
+    /// Ovject that shows turns order.
+    /// TODO: Move outside.
+    /// </summary>
+    public GameObject[] TurnActive = new GameObject[2];
+
+
+    /// <summary>
     /// Map that containes all cards.
     /// </summary>
     private Map map;
-
-    /// <summary>
-    /// Ovject that shows turns order.
-    /// </summary>
-    public GameObject[] TurnActive = new GameObject[2];
 
     private BattlePlayer[] players;
     private int playerId;
