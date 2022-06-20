@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Generate player deck
+/// Generator for dummy player
 /// </summary>
 public class MapGeneratorExample : AbstractGenerator
 {
