@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Simple player that can choose card.
+/// </summary>
 public class DemoPlayer : BattlePlayer
 {
     [SerializeField] private DeckVisualizer deckVisual;

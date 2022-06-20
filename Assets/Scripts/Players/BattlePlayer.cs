@@ -24,6 +24,10 @@ public abstract class BattlePlayer : MonoBehaviour
     /// </summary>
     protected List<AbstractCard> playerDeck;
 
+    /// <summary>
+    /// Call on start
+    /// </summary>
+    /// <param name="deck">Cards in hand</param>
     public virtual void Init(List<AbstractCard> deck)
     {
         playerDeck = deck;
