@@ -19,7 +19,7 @@ public class BattleManager : MonoBehaviour
     /// <summary>
     /// Map that containes all cards.
     /// </summary>
-    private Map map;
+    [SerializeField] private Map map;
 
     private BattlePlayer[] players;
     private int playerId;
@@ -65,7 +65,7 @@ public class BattleManager : MonoBehaviour
         for (int i = map.Cards.Length - 1; i >= 0; i--)
         {
             for (int j = map.Cards[i].Count - 1; j >= 0; j--)
-            {
+            {   
                 if(((CreatureCard)map.Cards[i][j]).HitPoint <= 0)
                 {
                     map.RemoveCard(i, j);

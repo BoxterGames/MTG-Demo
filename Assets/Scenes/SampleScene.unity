@@ -218,10 +218,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b776be5bd0351794f940cc6c447c4ac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Field: {fileID: 1766580391}
   TurnActive:
   - {fileID: 1801006748}
   - {fileID: 1327861805}
+  map: {fileID: 1766580391}
 --- !u!4 &220617153
 Transform:
   m_ObjectHideFlags: 0
